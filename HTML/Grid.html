@@ -6,36 +6,69 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/reset.css">
+    <link rel="stylesheet" href="../CSS/Graid.css">
 </head>
 
 <body>
+    <div class="Rows topImagesWithName">
+        <ul>
+            <li class="cell exampleImageInLI">
+                <img src="../Images/Group1/1.png" class="gameImage" alt="">
+            </li>
+            <li class="cell exampleImageInLI">
+                <img src="../Images/Group1/2.png" class="gameImage" alt="">
+            </li>
+            <li class="cell exampleImageInLI">
+                <img src="../Images/Group1/3.png" class="gameImage" alt="">
+            </li>
+            <li class="cell exampleImageInLI">
+                <img class="gameImage" src="../Images/Group1/4.png">
+            </li>
+            <li class="textDivTopPage timer"> 00:00 </li>
+            <li class="textDivTopPage playerName">
+                Welcome: <span id="playerName">ahmed</span>
+            </li>
+        </ul>
+        <ul>
+            <li class="imageNumber"style="margin-left:50px">1</li>
+            <li class="imageNumber">2</li>
+            <li class="imageNumber">3</li>
+            <li class="imageNumber">4</li>
+        </ul>
+    </div>
     <div id="grid">
-        <div class="cards">
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-        </div>
-        <div class="cards">
-            <div class="cell"></div>
+        <div class="Rows">
+            <div class="cell">
+                <img src="../Images/Group1/1.png" class="gameImage" alt="">
+            </div>
             <div class="cell"></div>
             <div class="cell"></div>
             <div class="cell"></div>
         </div>
-        <div class="cards">
+        <br>
+        <div class="Rows">
             <div class="cell"></div>
-            <div class="cell"></div>
+            <div class="cell"><img src="../Images/Group1/2.png" class="gameImage" alt=""></div>
             <div class="cell"></div>
             <div class="cell"></div>
         </div>
-        <div class="cards">
+        <br>
+        <div class="Rows">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"><img src="../Images/Group1/3.png" class="gameImage" alt=""></div>
+            <div class="cell"></div>
+        </div>
+        <br>
+        <div class="Rows">
             <div class="cell"></div>
             <div class="cell"></div>
             <div class="cell"></div>
-            <div class="cell"></div>
+            <div class="cell"><img src="../Images/Group1/4.png" class="gameImage" alt=""></div>
         </div>
     </div>
+    <button class="startButton">Start</button>
 </body>
 
 </html>

@@ -1,5 +1,4 @@
 html,
-body,
 div,
 span,
 applet,
@@ -101,7 +100,11 @@ section {
   display: block;
 }
 body {
-  line-height: 1;
+  background-image: url(../Images/back-ground.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
 }
 ol,
 ul {
@@ -118,7 +121,7 @@ q:after {
   content: "";
   content: none;
 }
-table {
+/* table {
   border-collapse: collapse;
   border-spacing: 0;
-}
+} */
