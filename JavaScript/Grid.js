@@ -4,31 +4,29 @@ let selectCell = document.getElementById("firstOne")
 let curruntRow = 0;
 let curruntCell = 0;
 let values = {}
-let grid_array=[[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1]];
-let isfull=0;
-let column_pass = 0 ;
-let row_pass = 0 ;
-let timerInterval 
-
-// let timer=60*values["level"];
-// let timer = 5;
+let grid_array = [[-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1]];
+let isfull = 0;
+let column_pass = 0;
+let row_pass = 0;
+let timerInterval
+// let maxCells = values["level"]== 1 ? 4 : 9;
 cookeies.forEach(element => {
     values[element.split('=')[0].replace(' ', '')] = element.split('=')[1]
 });
-let timer=60*values["level"];
+let timer = 60 * values["level"];
 let LiS = document.querySelectorAll('li[class="cell"]');
 document.getElementById("playerName").innerText = values["userName"]
 for (let i = 0; i < LiS.length; i++) {
     LiS[i].children[0].src = `../Images/${values["name"]}/${i + 1}.png`
 }
 
-function startTimer(){
-     timerInterval = setInterval(() => {
+function startTimer() {
+    timerInterval = setInterval(() => {
         timer--;
         if (timer < 0) {
             clearInterval(timerInterval)
             document.getElementById("timer").innerText = `00:00`;
-            alert ("sorry try again you will pass next time");
+            alert("sorry try again you will pass next time");
             playAgain()
         }
         else if (timer < 10)
@@ -47,157 +45,170 @@ function playAgain() {
         location.reload();
     }
 }
-function moveDown() {
-    if (curruntRow < 3) {
-        selectCell.classList.remove("choosen")
-        selectCell.parentElement.nextElementSibling.nextElementSibling.children[curruntCell].classList.add("choosen")
-        selectCell = selectCell.parentElement.nextElementSibling.nextElementSibling.children[curruntCell]
-        console.log(selectCell)
-        curruntRow++
-    }
-    else {
-        curruntRow = 0
-        selectCell.classList.remove("choosen")
-        selectCell.parentElement.parentElement.children[curruntRow].children[curruntCell].classList.add("choosen")
-        selectCell = selectCell.parentElement.parentElement.children[curruntRow].children[curruntCell]
-    }
+// function moveDown() {
+//     if (curruntRow < 3) {
+//         selectCell.classList.remove("choosen")
+//         selectCell.parentElement.nextElementSibling.nextElementSibling.children[curruntCell].classList.add("choosen")
+//         selectCell = selectCell.parentElement.nextElementSibling.nextElementSibling.children[curruntCell]
+//         console.log(selectCell)
+//         curruntRow++
+//     }
+//     else {
+//         curruntRow = 0
+//         selectCell.classList.remove("choosen")
+//         selectCell.parentElement.parentElement.children[curruntRow].children[curruntCell].classList.add("choosen")
+//         selectCell = selectCell.parentElement.parentElement.children[curruntRow].children[curruntCell]
+//     }
+// }
+
+// function moveUp() {
+//     if (curruntRow > 0) {
+//         selectCell.classList.remove("choosen")
+//         selectCell.parentElement.previousElementSibling.previousElementSibling.children[curruntCell].classList.add("choosen")
+//         selectCell = selectCell.parentElement.previousElementSibling.previousElementSibling.children[curruntCell]
+//         console.log(selectCell)
+//         curruntRow--
+//     }
+//     else {
+//         curruntRow = 3
+//         selectCell.classList.remove("choosen")
+//         selectCell.parentElement.parentElement.children[curruntRow * 2].children[curruntCell].classList.add("choosen")
+//         selectCell = selectCell.parentElement.parentElement.children[curruntRow * 2].children[curruntCell]
+//     }
+// }
+// function moveRight() {
+//     if (curruntCell < 3) {
+//         selectCell.classList.remove("choosen")
+//         selectCell.nextElementSibling.classList.add("choosen")
+//         selectCell = selectCell.nextElementSibling
+//         curruntCell++;
+//     }
+//     else {
+//         curruntCell = 0
+//         selectCell.classList.remove("choosen")
+//         selectCell = selectCell.parentElement.children[0]
+//         selectCell.classList.add("choosen")
+//     }
+// }
+// function moveLeft() {
+//     if (curruntCell > 0) {
+//         selectCell.classList.remove("choosen")
+//         selectCell.previousElementSibling.classList.add("choosen")
+//         selectCell = selectCell.previousElementSibling
+//         curruntCell--;
+//     }
+//     else {
+//         curruntCell = 3
+//         selectCell.classList.remove("choosen")
+//         selectCell = selectCell.parentElement.children[3]
+//         selectCell.classList.add("choosen")
+//     }
+// }
+
+function moveX(direction ) {
+    curruntRow =  direction==-1?curruntRow-1:curruntRow+1   
+    curruntRow=curruntRow <0 ? 3: curruntRow > 3 ? 0:curruntRow; 
+    selectCell.classList.remove("choosen")
+    selectCell = document.getElementById("grid").children[curruntRow * 2].children[curruntCell]
+    selectCell.classList.add("choosen")
+}
+function moveY(direction ) {
+    curruntCell =  direction==-1?curruntCell-1:curruntCell+1   
+    curruntCell=curruntCell <0 ? 3: curruntCell > 3 ? 0:curruntCell; 
+    selectCell.classList.remove("choosen")
+    selectCell = document.getElementById("grid").children[curruntRow * 2].children[curruntCell]
+    selectCell.classList.add("choosen")
 }
 
-function moveUp() {
-    if (curruntRow > 0) {
-        selectCell.classList.remove("choosen")
-        selectCell.parentElement.previousElementSibling.previousElementSibling.children[curruntCell].classList.add("choosen")
-        selectCell = selectCell.parentElement.previousElementSibling.previousElementSibling.children[curruntCell]
-        console.log(selectCell)
-        curruntRow--
-    }
-    else {
-        curruntRow = 3
-        selectCell.classList.remove("choosen")
-        selectCell.parentElement.parentElement.children[curruntRow * 2].children[curruntCell].classList.add("choosen")
-        selectCell = selectCell.parentElement.parentElement.children[curruntRow * 2].children[curruntCell]
-    }
-}
-function moveRight() {
-    if (curruntCell < 3) {
-        selectCell.classList.remove("choosen")
-        selectCell.nextElementSibling.classList.add("choosen")
-        selectCell = selectCell.nextElementSibling
-        curruntCell++;
-    }
-    else {
-        curruntCell = 0
-        selectCell.classList.remove("choosen")
-        selectCell = selectCell.parentElement.children[0]
-        selectCell.classList.add("choosen")
-    }
-}
-function moveLeft() {
-    if (curruntCell > 0) {
-        selectCell.classList.remove("choosen")
-        selectCell.previousElementSibling.classList.add("choosen")
-        selectCell = selectCell.previousElementSibling
-        curruntCell--;
-    }
-    else {
-        curruntCell = 3
-        selectCell.classList.remove("choosen")
-        selectCell = selectCell.parentElement.children[3]
-        selectCell.classList.add("choosen")
-    }
+function check_full() {
+    isfull = 0;
+    for (let i = 0; i < 4; i++) 
+        for (let j = 0; j < 4; j++) 
+            if (grid_array[i][j] == -1)
+                isfull++;
+    if (isfull == 0)
+        return true;
+    else
+        return false;
+
 }
 
-moveEvent=document.body.addEventListener("keyup", (e) => {
-    if (isFinite(e.key) && Number(e.key) > 0 && Number(e.key) < 5) {
-
-        //new code 
-        grid_array[curruntRow][curruntCell]=Number(e.key);
-        //////////////////////////////////////////////////////
-
-        let image = selectCell.children[0]
-        if (!image) {
-            image = document.createElement("img")
-            image.classList.add("gameImage")
-            selectCell.appendChild(image)
+function check_pass() {
+    row_pass = 0;
+    column_pass = 0;
+    for (let row = 0; row < 4; row++) {
+        for (let col = 0; col < 4; col++) {
+            for (let i = 0; i < 4; i++) 
+                if (grid_array[row][col] == grid_array[i][col] && i != row) 
+                    row_pass++;
+            for (let j = 0; j < 4; j++) 
+                if (grid_array[row][col] == grid_array[row][j] && j != col) 
+                    column_pass++;
         }
-        image.src = `../Images/${values['name']}/${e.key}.png`;
-        //new code 
-        grid_array[curruntRow][curruntCell]=Number(e.key);
-        //////////////////////////////////////////////////////
     }
-    else if (e.code == 'ArrowLeft')
-        moveLeft()
-    else if (e.code == 'ArrowUp')
-        moveUp()
-    else if (e.code == 'ArrowDown')
-        moveDown()
-    else if (e.code == 'ArrowRight')
-        moveRight()
- //new code 
-        if (check_full()){
-            if (check_pass()){
-                setTimeout(()=>{
-                    alert ("congratulations good work you are awsome");
-                    clearInterval(timerInterval);
-                    playAgain();
-                    grid_array=[[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1]];
-                },100);
-            }
-           
-        }
-})
 
+    if (row_pass == 0 && column_pass == 0)
+        return true;
+     else
+        return false;
+    
+}
+
+function checkResult(){
+    if (check_full()) {
+        if (check_pass()) {
+            setTimeout(() => {
+                alert("congratulations good work you are awsome");
+                clearInterval(timerInterval);
+                playAgain();
+                grid_array = [[-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1]];
+            }, 100);
+        }
+    }
+}
+function putImage(imageNumber, rowNumber, cellNumber,randomImage=false) {
+    let selectCell = document.getElementById("grid").children[rowNumber * 2].children[cellNumber]
+    let image = selectCell.children[0]
+    if (!image) {
+        image = document.createElement("img")
+        image.classList.add("gameImage")
+        selectCell.appendChild(image)
+    }
+    if(randomImage)
+        image.name="randomImage"
+    image.src = `../Images/${values['name']}/${imageNumber}.png`;
+    grid_array[rowNumber][cellNumber] = Number(imageNumber);
+}
+function getRandomImages(max = 4) {
+    for (let i = 0; i < Math.sqrt(max); i++) {
+        let curruntCell = parseInt(Math.random() * (max - 0) + 0)
+        let curruntRow = parseInt(Math.random() * (max - 0) + 0)
+        let randomeImage = parseInt(Math.random() * (max - 1) + 1)
+        putImage(randomeImage, curruntRow, curruntCell,true)
+    }
+}
+function addKeyEvent(){
+    document.body.addEventListener("keyup", (e) => {
+        if (isFinite(e.key) && Number(e.key) > 0 && Number(e.key) < 5) 
+            putImage(e.key,curruntRow,curruntCell)
+        else if (e.code == 'ArrowLeft')
+            moveY(-1)
+        else if (e.code == 'ArrowUp')
+            moveX(-1)
+        else if (e.code == 'ArrowDown')
+            moveX(1)
+        else if (e.code == 'ArrowRight')
+            moveY(1)
+        //new code 
+        checkResult()
+    })
+}
 startButton.addEventListener("click", () => {
+    getRandomImages()
     startButton.disabled = true
     document.getElementById("timer").innerText = `00:${timer}`
     startButton.style.pointerEvents = "none"
     document.getElementById("firstOne").classList.add("choosen")
     startTimer()
+    addKeyEvent()
 })
-
-function check_full (){
-    isfull=0;
-    for (let i =0 ; i< 4 ; i++){
-        for ( let j =0 ; j<4 ; j++){
-            if(grid_array[i][j]==-1){
-                isfull++;
-            }
-        }
-    }
-    if (isfull==0){
-        return true ;
-    }else{
-        return false ; 
-    }
-}
-
-function check_pass (){
-    row_pass = 0;
-    column_pass = 0 ; 
-    for (let row =0 ; row< 4 ; row++){
-        for ( let col =0 ; col<4 ; col++){
-            ////
-            for (let i = 0 ; i < 4; i++){
-                if (grid_array[row][col] == grid_array[i][col] && i != row  )
-                {
-                    row_pass++ ; 
-                }
-            }
-           
-            ////
-            for (let j = 0; j < 4; j++){
-            if (grid_array[row][col] == grid_array[row][ j] && j != col )
-            {
-               column_pass++;
-            }
-        }
-
-    }
-        }
-    
-    if (row_pass==0 && column_pass ==0 ){
-        return true ; 
-    }else {
-        return false ; 
-    }
-}
