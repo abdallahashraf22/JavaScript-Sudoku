@@ -26,7 +26,8 @@ function startTimer(){
         timer--;
         if (timer < 0) {
             clearInterval(timerInterval)
-            document.getElementById("timer").innerText = `00:00`
+            document.getElementById("timer").innerText = `00:00`;
+            alert ("sorry try again you will pass next time");
             playAgain()
         }
         else if (timer < 10)
@@ -142,14 +143,6 @@ moveEvent=document.body.addEventListener("keyup", (e) => {
                 },100);
             }
            
-            else{
-                setTimeout(()=>{
-                    alert ("sorry try again u will pass next time ");
-                    clearInterval(timerInterval);
-                    playAgain();
-                    grid_array=[[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1]];
-                },100);
-            }
         }
 })
 
