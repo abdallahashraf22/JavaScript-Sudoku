@@ -44,6 +44,21 @@ function playAgain() {
         startButton.style.pointerEvents = "auto"
         location.reload();
     }
+    else{
+        document.body.removeEventListener("keyup", (e) => {
+            if (isFinite(e.key) && Number(e.key) > 0 && Number(e.key) < 5) 
+                putImage(e.key,curruntRow,curruntCell)
+            else if (e.code == 'ArrowLeft')
+                move(-1,"x")
+            else if (e.code == 'ArrowRight')
+                move(1,"x")
+            else if (e.code == 'ArrowUp')
+                move(-1,"y")
+            else if (e.code == 'ArrowDown')
+                move(1,"y")
+            checkResult()
+        },false);
+    }
 }
 // function moveDown() {
 //     if (curruntRow < 3) {
@@ -84,37 +99,50 @@ function playAgain() {
 //         curruntCell++;
 //     }
 //     else {
-//         curruntCell = 0
-//         selectCell.classList.remove("choosen")
-//         selectCell = selectCell.parentElement.children[0]
-//         selectCell.classList.add("choosen")
-//     }
-// }
-// function moveLeft() {
-//     if (curruntCell > 0) {
-//         selectCell.classList.remove("choosen")
+    //         curruntCell = 0
+    //         selectCell.classList.remove("choosen")
+    //         selectCell = selectCell.parentElement.children[0]
+    //         selectCell.classList.add("choosen")
+    //     }
+    // }
+    // function moveLeft() {
+        //     if (curruntCell > 0) {
+            //         selectCell.classList.remove("choosen")
 //         selectCell.previousElementSibling.classList.add("choosen")
 //         selectCell = selectCell.previousElementSibling
 //         curruntCell--;
 //     }
 //     else {
-//         curruntCell = 3
-//         selectCell.classList.remove("choosen")
-//         selectCell = selectCell.parentElement.children[3]
-//         selectCell.classList.add("choosen")
-//     }
-// }
-
-function moveX(direction ) {
-    curruntRow =  direction==-1?curruntRow-1:curruntRow+1   
-    curruntRow=curruntRow <0 ? 3: curruntRow > 3 ? 0:curruntRow; 
-    selectCell.classList.remove("choosen")
-    selectCell = document.getElementById("grid").children[curruntRow * 2].children[curruntCell]
-    selectCell.classList.add("choosen")
-}
-function moveY(direction ) {
-    curruntCell =  direction==-1?curruntCell-1:curruntCell+1   
-    curruntCell=curruntCell <0 ? 3: curruntCell > 3 ? 0:curruntCell; 
+    //         curruntCell = 3
+    //         selectCell.classList.remove("choosen")
+    //         selectCell = selectCell.parentElement.children[3]
+    //         selectCell.classList.add("choosen")
+    //     }
+    // }
+    // function moveY(direction ) {
+    //     curruntRow =  direction==-1?curruntRow-1:curruntRow+1   
+    //     curruntRow=curruntRow <0 ? 3: curruntRow > 3 ? 0:curruntRow; 
+    //     selectCell.classList.remove("choosen")
+    //     selectCell = document.getElementById("grid").children[curruntRow * 2].children[curruntCell]
+    //     selectCell.classList.add("choosen")
+    // }
+    // function moveX(direction ) {
+    //     curruntCell =  direction==-1?curruntCell-1:curruntCell+1   
+    //     curruntCell=curruntCell <0 ? 3: curruntCell > 3 ? 0:curruntCell; 
+    //     selectCell.classList.remove("choosen")
+    //     selectCell = document.getElementById("grid").children[curruntRow * 2].children[curruntCell]
+    //     selectCell.classList.add("choosen")
+    // }
+    
+function move(direction , axis) {
+    if(axis == "y"){
+        curruntRow =  direction==-1?curruntRow-1:curruntRow+1   
+        curruntRow=curruntRow <0 ? 3: curruntRow > 3 ? 0:curruntRow; 
+    }
+    else if(axis == "x"){
+        curruntCell =  direction==-1?curruntCell-1:curruntCell+1   
+        curruntCell=curruntCell <0 ? 3: curruntCell > 3 ? 0:curruntCell; 
+    }
     selectCell.classList.remove("choosen")
     selectCell = document.getElementById("grid").children[curruntRow * 2].children[curruntCell]
     selectCell.classList.add("choosen")
@@ -188,11 +216,17 @@ function putImage(imageNumber, rowNumber, cellNumber,randomImage=false) {
     }
 }
 function getRandomImages(max = 4) {
-    for (let i = 0; i < Math.sqrt(max); i++) {
+    let dict = {}
+    for (let i = 0; i < max; i++) {
+        let curruntRow = i
         let curruntCell = parseInt(Math.random() * (max - 0) + 0)
-        let curruntRow = parseInt(Math.random() * (max - 0) + 0)
-        let randomeImage = parseInt(Math.random() * (max - 1) + 1)
-        putImage(randomeImage, curruntRow, curruntCell,true)
+        let randomeImage = parseInt(Math.random() * (max) + 1)
+        if(!dict[randomeImage]){
+            putImage(randomeImage, curruntRow, curruntCell, true)
+            dict[randomeImage] = true;
+        }
+        else
+            i--;
     }
 }
 function addKeyEvent(){
@@ -200,13 +234,13 @@ function addKeyEvent(){
         if (isFinite(e.key) && Number(e.key) > 0 && Number(e.key) < 5) 
             putImage(e.key,curruntRow,curruntCell)
         else if (e.code == 'ArrowLeft')
-            moveY(-1)
-        else if (e.code == 'ArrowUp')
-            moveX(-1)
-        else if (e.code == 'ArrowDown')
-            moveX(1)
+            move(-1,"x")
         else if (e.code == 'ArrowRight')
-            moveY(1)
+            move(1,"x")
+        else if (e.code == 'ArrowUp')
+            move(-1,"y")
+        else if (e.code == 'ArrowDown')
+            move(1,"y")
         checkResult()
     })
 }
