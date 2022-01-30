@@ -166,6 +166,12 @@ function checkResult(){
         }
     }
 }
+function checkAvilablity(selector){
+    if(selector.children[0] && selector.children[0].name=="randomImage")
+        return true
+    else
+        return false;
+}
 function putImage(imageNumber, rowNumber, cellNumber,randomImage=false) {
     let selectCell = document.getElementById("grid").children[rowNumber * 2].children[cellNumber]
     let image = selectCell.children[0]
@@ -176,8 +182,10 @@ function putImage(imageNumber, rowNumber, cellNumber,randomImage=false) {
     }
     if(randomImage)
         image.name="randomImage"
-    image.src = `../Images/${values['name']}/${imageNumber}.png`;
-    grid_array[rowNumber][cellNumber] = Number(imageNumber);
+    if(randomImage||!checkAvilablity(selectCell)){
+        image.src = `../Images/${values['name']}/${imageNumber}.png`;
+        grid_array[rowNumber][cellNumber] = Number(imageNumber);
+    }
 }
 function getRandomImages(max = 4) {
     for (let i = 0; i < Math.sqrt(max); i++) {
@@ -199,7 +207,6 @@ function addKeyEvent(){
             moveX(1)
         else if (e.code == 'ArrowRight')
             moveY(1)
-        //new code 
         checkResult()
     })
 }
