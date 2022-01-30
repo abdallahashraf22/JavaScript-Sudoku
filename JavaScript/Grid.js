@@ -45,94 +45,9 @@ function playAgain() {
         location.reload();
     }
     else{
-        document.body.removeEventListener("keyup", (e) => {
-            if (isFinite(e.key) && Number(e.key) > 0 && Number(e.key) < 5) 
-                putImage(e.key,curruntRow,curruntCell)
-            else if (e.code == 'ArrowLeft')
-                move(-1,"x")
-            else if (e.code == 'ArrowRight')
-                move(1,"x")
-            else if (e.code == 'ArrowUp')
-                move(-1,"y")
-            else if (e.code == 'ArrowDown')
-                move(1,"y")
-            checkResult()
-        },false);
+        location.assign("login-page.html")
     }
 }
-// function moveDown() {
-//     if (curruntRow < 3) {
-//         selectCell.classList.remove("choosen")
-//         selectCell.parentElement.nextElementSibling.nextElementSibling.children[curruntCell].classList.add("choosen")
-//         selectCell = selectCell.parentElement.nextElementSibling.nextElementSibling.children[curruntCell]
-//         console.log(selectCell)
-//         curruntRow++
-//     }
-//     else {
-//         curruntRow = 0
-//         selectCell.classList.remove("choosen")
-//         selectCell.parentElement.parentElement.children[curruntRow].children[curruntCell].classList.add("choosen")
-//         selectCell = selectCell.parentElement.parentElement.children[curruntRow].children[curruntCell]
-//     }
-// }
-
-// function moveUp() {
-//     if (curruntRow > 0) {
-//         selectCell.classList.remove("choosen")
-//         selectCell.parentElement.previousElementSibling.previousElementSibling.children[curruntCell].classList.add("choosen")
-//         selectCell = selectCell.parentElement.previousElementSibling.previousElementSibling.children[curruntCell]
-//         console.log(selectCell)
-//         curruntRow--
-//     }
-//     else {
-//         curruntRow = 3
-//         selectCell.classList.remove("choosen")
-//         selectCell.parentElement.parentElement.children[curruntRow * 2].children[curruntCell].classList.add("choosen")
-//         selectCell = selectCell.parentElement.parentElement.children[curruntRow * 2].children[curruntCell]
-//     }
-// }
-// function moveRight() {
-//     if (curruntCell < 3) {
-//         selectCell.classList.remove("choosen")
-//         selectCell.nextElementSibling.classList.add("choosen")
-//         selectCell = selectCell.nextElementSibling
-//         curruntCell++;
-//     }
-//     else {
-    //         curruntCell = 0
-    //         selectCell.classList.remove("choosen")
-    //         selectCell = selectCell.parentElement.children[0]
-    //         selectCell.classList.add("choosen")
-    //     }
-    // }
-    // function moveLeft() {
-        //     if (curruntCell > 0) {
-            //         selectCell.classList.remove("choosen")
-//         selectCell.previousElementSibling.classList.add("choosen")
-//         selectCell = selectCell.previousElementSibling
-//         curruntCell--;
-//     }
-//     else {
-    //         curruntCell = 3
-    //         selectCell.classList.remove("choosen")
-    //         selectCell = selectCell.parentElement.children[3]
-    //         selectCell.classList.add("choosen")
-    //     }
-    // }
-    // function moveY(direction ) {
-    //     curruntRow =  direction==-1?curruntRow-1:curruntRow+1   
-    //     curruntRow=curruntRow <0 ? 3: curruntRow > 3 ? 0:curruntRow; 
-    //     selectCell.classList.remove("choosen")
-    //     selectCell = document.getElementById("grid").children[curruntRow * 2].children[curruntCell]
-    //     selectCell.classList.add("choosen")
-    // }
-    // function moveX(direction ) {
-    //     curruntCell =  direction==-1?curruntCell-1:curruntCell+1   
-    //     curruntCell=curruntCell <0 ? 3: curruntCell > 3 ? 0:curruntCell; 
-    //     selectCell.classList.remove("choosen")
-    //     selectCell = document.getElementById("grid").children[curruntRow * 2].children[curruntCell]
-    //     selectCell.classList.add("choosen")
-    // }
     
 function move(direction , axis) {
     if(axis == "y"){
