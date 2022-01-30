@@ -26,7 +26,7 @@ function startTimer() {
         if (timer < 0) {
             clearInterval(timerInterval)
             document.getElementById("timer").innerText = `00:00`;
-            alert("sorry try again you will pass next time");
+            alert ("Timeout! Try again; you will get it next time!");
             playAgain()
         }
         else if (timer < 10)
@@ -96,12 +96,29 @@ function check_pass() {
         return false;
     
 }
-
+var array_of_names = localStorage.getItem("Name");
+var array_of_scores = {};
 function checkResult(){
     if (check_full()) {
         if (check_pass()) {
             setTimeout(() => {
-                alert("congratulations good work you are awsome");
+                alert ("congratulations, good job! you are Awesome!");
+                if(localStorage.getItem(values["userName"]))
+                {
+                    if(localStorage.getItem(values["userName"]) < timer)
+                    {
+                        localStorage.setItem(values["userName"], timer);
+                        alert("Congrats! you also broke your high Score, now it's: "+ (localStorage.getItem(values["userName"])));
+                    }
+                    else
+                    {
+                        alert("Your high score was: " +localStorage.getItem(values["userName"]));
+                    }
+                    
+                }
+                else{
+                    localStorage.setItem(values["userName"], timer);
+                }
                 clearInterval(timerInterval);
                 playAgain();
                 grid_array = [[-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1]];
@@ -123,8 +140,11 @@ function putImage(imageNumber, rowNumber, cellNumber,randomImage=false) {
         image.classList.add("gameImage")
         selectCell.appendChild(image)
     }
-    if(randomImage)
+    if(randomImage){
         image.name="randomImage"
+        selectCell.style.borderColor = "green";
+    }
+
     if(randomImage||!checkAvilablity(selectCell)){
         image.src = `../Images/${values['name']}/${imageNumber}.png`;
         grid_array[rowNumber][cellNumber] = Number(imageNumber);
@@ -132,16 +152,26 @@ function putImage(imageNumber, rowNumber, cellNumber,randomImage=false) {
 }
 function getRandomImages(max = 4) {
     let dict = {}
+    let columns = {0:0,1:0,2:0,3:0};
     for (let i = 0; i < max; i++) {
         let curruntRow = i
         let curruntCell = parseInt(Math.random() * (max - 0) + 0)
         let randomeImage = parseInt(Math.random() * (max) + 1)
+
         if(!dict[randomeImage]){
+            if(columns[curruntCell] >= 2){
+                i--;
+                continue
+            } 
+            else {
+                columns[curruntCell]++;
+            }
             putImage(randomeImage, curruntRow, curruntCell, true)
             dict[randomeImage] = true;
         }
-        else
+        else{
             i--;
+        }
     }
 }
 function addKeyEvent(){

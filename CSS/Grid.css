@@ -40,7 +40,7 @@ div > ul > li > img.gameImage {
   height: 120px;
   border-radius: 30%;
   display: inline-block;
-  border: 1px solid rgba(245, 3, 233, 0.3);
+  border: 3px solid rgba(245, 3, 233, 0.3);
   /* padding-left: 5px; */
 }
 
