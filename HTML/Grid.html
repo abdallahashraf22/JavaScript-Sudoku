@@ -14,19 +14,19 @@
 <body>
     <div class="Rows topImagesWithName">
         <ul>
-            <li class="cell exampleImageInLI">
+            <li class="cell">
                 <img src="../Images/Group1/1.png" class="gameImage" alt="">
             </li>
-            <li class="cell exampleImageInLI">
+            <li class="cell">
                 <img src="../Images/Group1/2.png" class="gameImage" alt="">
             </li>
-            <li class="cell exampleImageInLI">
+            <li class="cell">
                 <img src="../Images/Group1/3.png" class="gameImage" alt="">
             </li>
-            <li class="cell exampleImageInLI">
+            <li class="cell">
                 <img class="gameImage" src="../Images/Group1/4.png">
             </li>
-            <li class="textDivTopPage timer"> 00:00 </li>
+            <li id="timer" class="textDivTopPage timer"> 00:00 </li>
             <li class="textDivTopPage playerName">
                 Welcome: <span id="playerName">ahmed</span>
             </li>
@@ -40,8 +40,8 @@
     </div>
     <div id="grid">
         <div class="Rows">
-            <div class="cell">
-                <img src="../Images/Group1/1.png" class="gameImage" alt="">
+            <div class="cell" id="firstOne" >
+                <!-- <img src="../Images/Group1/1.png" class="gameImage" alt=""> -->
             </div>
             <div class="cell"></div>
             <div class="cell"></div>
@@ -50,7 +50,9 @@
         <br>
         <div class="Rows">
             <div class="cell"></div>
-            <div class="cell"><img src="../Images/Group1/2.png" class="gameImage" alt=""></div>
+            <div class="cell">
+                <!-- <img src="../Images/Group1/2.png" class="gameImage" alt=""> -->
+            </div>
             <div class="cell"></div>
             <div class="cell"></div>
         </div>
@@ -58,7 +60,9 @@
         <div class="Rows">
             <div class="cell"></div>
             <div class="cell"></div>
-            <div class="cell"><img src="../Images/Group1/3.png" class="gameImage" alt=""></div>
+            <div class="cell">
+                <!-- <img src="../Images/Group1/3.png" class="gameImage" alt=""> -->
+            </div>
             <div class="cell"></div>
         </div>
         <br>
@@ -66,10 +70,12 @@
             <div class="cell"></div>
             <div class="cell"></div>
             <div class="cell"></div>
-            <div class="cell"><img src="../Images/Group1/4.png" class="gameImage" alt=""></div>
+            <div class="cell">
+                <!-- <img src="../Images/Group1/4.png" class="gameImage" alt=""> -->
+            </div>
         </div>
     </div>
-    <button class="startButton">Start</button>
+    <button id="startButton" class="startButton">Start</button>
     <script src="../JavaScript/Grid.js"></script>
 </body>
 
