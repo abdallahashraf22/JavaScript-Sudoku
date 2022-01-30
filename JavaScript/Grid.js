@@ -4,11 +4,11 @@ let selectCell = document.getElementById("firstOne")
 let curruntRow = 0;
 let curruntCell = 0;
 let values = {}
-// let timer=60*values["level"];
-let timer = 5;
+//let timer = 5;
 cookeies.forEach(element => {
     values[element.split('=')[0].replace(' ', '')] = element.split('=')[1]
 });
+let timer=60*values["level"];
 let LiS = document.querySelectorAll('li[class="cell"]');
 document.getElementById("playerName").innerText = values["userName"]
 for (let i = 0; i < LiS.length; i++) {
