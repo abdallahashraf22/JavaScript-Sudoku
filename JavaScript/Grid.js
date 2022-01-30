@@ -4,6 +4,12 @@ let selectCell = document.getElementById("firstOne")
 let curruntRow = 0;
 let curruntCell = 0;
 let values = {}
+let grid_array=[[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1]];
+let isfull=0;
+let column_pass = 0 ;
+let row_pass = 0 ;
+let timerInterval 
+
 // let timer=60*values["level"];
 let timer = 5;
 cookeies.forEach(element => {
@@ -16,7 +22,7 @@ for (let i = 0; i < LiS.length; i++) {
 }
 
 function startTimer(){
-    let timerInterval = setInterval(() => {
+     timerInterval = setInterval(() => {
         timer--;
         if (timer < 0) {
             clearInterval(timerInterval)
@@ -101,13 +107,21 @@ function moveLeft() {
 
 moveEvent=document.body.addEventListener("keyup", (e) => {
     if (isFinite(e.key) && Number(e.key) > 0 && Number(e.key) < 5) {
+
+        //new code 
+        grid_array[curruntRow][curruntCell]=Number(e.key);
+        //////////////////////////////////////////////////////
+
         let image = selectCell.children[0]
         if (!image) {
             image = document.createElement("img")
             image.classList.add("gameImage")
             selectCell.appendChild(image)
         }
-        image.src = `../Images/${values['name']}/${e.key}.png`
+        image.src = `../Images/${values['name']}/${e.key}.png`;
+        //new code 
+        grid_array[curruntRow][curruntCell]=Number(e.key);
+        //////////////////////////////////////////////////////
     }
     else if (e.code == 'ArrowLeft')
         moveLeft()
@@ -117,6 +131,26 @@ moveEvent=document.body.addEventListener("keyup", (e) => {
         moveDown()
     else if (e.code == 'ArrowRight')
         moveRight()
+ //new code 
+        if (check_full()){
+            if (check_pass()){
+                setTimeout(()=>{
+                    alert ("congratulations good work you are awsome");
+                    clearInterval(timerInterval);
+                    playAgain();
+                    grid_array=[[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1]];
+                },100);
+            }
+           
+            else{
+                setTimeout(()=>{
+                    alert ("sorry try again u will pass next time ");
+                    clearInterval(timerInterval);
+                    playAgain();
+                    grid_array=[[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1]];
+                },100);
+            }
+        }
 })
 
 startButton.addEventListener("click", () => {
@@ -126,3 +160,50 @@ startButton.addEventListener("click", () => {
     document.getElementById("firstOne").classList.add("choosen")
     startTimer()
 })
+
+function check_full (){
+    isfull=0;
+    for (let i =0 ; i< 4 ; i++){
+        for ( let j =0 ; j<4 ; j++){
+            if(grid_array[i][j]==-1){
+                isfull++;
+            }
+        }
+    }
+    if (isfull==0){
+        return true ;
+    }else{
+        return false ; 
+    }
+}
+
+function check_pass (){
+    row_pass = 0;
+    column_pass = 0 ; 
+    for (let row =0 ; row< 4 ; row++){
+        for ( let col =0 ; col<4 ; col++){
+            ////
+            for (let i = 0 ; i < 4; i++){
+                if (grid_array[row][col] == grid_array[i][col] && i != row  )
+                {
+                    row_pass++ ; 
+                }
+            }
+           
+            ////
+            for (let j = 0; j < 4; j++){
+            if (grid_array[row][col] == grid_array[row][ j] && j != col )
+            {
+               column_pass++;
+            }
+        }
+
+    }
+        }
+    
+    if (row_pass==0 && column_pass ==0 ){
+        return true ; 
+    }else {
+        return false ; 
+    }
+}
