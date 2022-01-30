@@ -93,8 +93,6 @@ function check_pass() {
      else
         return false;
 }
-var array_of_names = localStorage.getItem("Name");
-var array_of_scores = {};
 function checkResult(){
     if (check_full()) {
         if (check_pass()) {
