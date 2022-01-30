@@ -9,10 +9,10 @@ let isfull = 0;
 let column_pass = 0;
 let row_pass = 0;
 let timerInterval
-// let maxCells = values["level"]== 1 ? 4 : 9;
 cookeies.forEach(element => {
     values[element.split('=')[0].replace(' ', '')] = element.split('=')[1]
 });
+let maxCells = values["level"] == 1 ? 4 : 9;
 let timer = 60 * values["level"];
 let LiS = document.querySelectorAll('li[class="cell"]');
 document.getElementById("playerName").innerText = values["userName"]
@@ -65,39 +65,34 @@ function move(direction , axis) {
 
 function check_full() {
     isfull = 0;
-    for (let i = 0; i < 4; i++) 
-        for (let j = 0; j < 4; j++) 
+    for (let i = 0; i < maxCells; i++) 
+        for (let j = 0; j < maxCells; j++) 
             if (grid_array[i][j] == -1)
                 isfull++;
     if (isfull == 0)
         return true;
     else
         return false;
-
 }
 
 function check_pass() {
     row_pass = 0;
     column_pass = 0;
-    for (let row = 0; row < 4; row++) {
-        for (let col = 0; col < 4; col++) {
-            for (let i = 0; i < 4; i++) 
+    for (let row = 0; row < maxCells; row++) {
+        for (let col = 0; col < maxCells; col++) {
+            for (let i = 0; i < maxCells; i++) 
                 if (grid_array[row][col] == grid_array[i][col] && i != row) 
                     row_pass++;
-            for (let j = 0; j < 4; j++) 
+            for (let j = 0; j < maxCells; j++) 
                 if (grid_array[row][col] == grid_array[row][j] && j != col) 
                     column_pass++;
         }
     }
-
     if (row_pass == 0 && column_pass == 0)
         return true;
      else
         return false;
-    
 }
-var array_of_names = localStorage.getItem("Name");
-var array_of_scores = {};
 function checkResult(){
     if (check_full()) {
         if (check_pass()) {
@@ -174,27 +169,26 @@ function getRandomImages(max = 4) {
         }
     }
 }
-function addKeyEvent(){
-    document.body.addEventListener("keyup", (e) => {
-        if (isFinite(e.key) && Number(e.key) > 0 && Number(e.key) < 5) 
-            putImage(e.key,curruntRow,curruntCell)
-        else if (e.code == 'ArrowLeft')
-            move(-1,"x")
-        else if (e.code == 'ArrowRight')
-            move(1,"x")
-        else if (e.code == 'ArrowUp')
-            move(-1,"y")
-        else if (e.code == 'ArrowDown')
-            move(1,"y")
-        checkResult()
-    })
+
+function the_event_on_the_Grid(e){
+    if (isFinite(e.key) && Number(e.key) > 0 && Number(e.key) < 5) 
+        putImage(e.key,curruntRow,curruntCell)
+    else if (e.code == 'ArrowLeft')
+        move(-1,"x")
+    else if (e.code == 'ArrowRight')
+        move(1,"x")
+    else if (e.code == 'ArrowUp')
+        move(-1,"y")
+    else if (e.code == 'ArrowDown')
+        move(1,"y")
+    checkResult()
 }
 startButton.addEventListener("click", () => {
-    getRandomImages()
+    getRandomImages(maxCells)
     startButton.disabled = true
     document.getElementById("timer").innerText = `00:${timer}`
     startButton.style.pointerEvents = "none"
     document.getElementById("firstOne").classList.add("choosen")
     startTimer()
-    addKeyEvent()
+    document.body.addEventListener("keyup", the_event_on_the_Grid);
 })
