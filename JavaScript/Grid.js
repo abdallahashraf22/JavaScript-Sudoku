@@ -4,7 +4,8 @@ let selectCell = document.getElementById("firstOne")
 let curruntRow = 0;
 let curruntCell = 0;
 let values = {}
-let grid_array = [[-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1]];
+//let grid_array = [[-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1]];
+let grid_array = [];
 let isfull = 0;
 let column_pass = 0;
 let row_pass = 0;
@@ -20,6 +21,15 @@ for (let i = 0; i < LiS.length; i++) {
     LiS[i].children[0].src = `../Images/${values["name"]}/${i + 1}.png`
 }
 
+function reset_grid(){
+    for(let i=0 ; i<maxCells;i++){
+        grid_array.push([]);
+        for(let j=0 ; j<maxCells;j++){
+            grid_array[i].push(-1);
+        }
+    }
+}
+
 function add_the_highscore(){
     if(localStorage.getItem(values["userName"]+"-"+values["level"])){
         let player_name_li = document.getElementsByClassName("playerName")[0];
@@ -30,7 +40,6 @@ function add_the_highscore(){
         player_name_li.insertAdjacentElement("afterend", the_score_LI);
     }
 }
-add_the_highscore();
 
 function startTimer() {
     timerInterval = setInterval(() => {
@@ -130,8 +139,9 @@ function checkResult(){
                     localStorage.setItem(values["userName"]+"-"+values["level"], timer);
                 }
                 clearInterval(timerInterval);
-               // playAgain();
-                grid_array = [[-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1]];
+               //////////////// playAgain();
+                // grid_array = [[-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1]];
+                reset_grid();
             }, 100);
         }
     }
@@ -142,6 +152,7 @@ function checkAvilablity(selector){
     else
         return false;
 }
+
 function putImage(imageNumber, rowNumber, cellNumber,randomImage=false) {
     let selectCell = document.getElementById("grid").children[rowNumber * 2].children[cellNumber]
     let image = selectCell.children[0]
@@ -200,6 +211,7 @@ function the_event_on_the_Grid(e){
 }
 
 startButton.addEventListener("click", () => {
+    reset_grid();
     getRandomImages(maxCells)
     startButton.disabled = true
     document.getElementById("timer").innerText = `00:${timer}`
@@ -216,3 +228,4 @@ function remove_alert() {
         element.classList.remove("show-modal");
         setTimeout(playAgain,100);
 }
+add_the_highscore();
