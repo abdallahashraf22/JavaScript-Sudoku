@@ -11,6 +11,16 @@
 </head>
 
 <body>
+    <!-- new confirm code -->
+    <div id ="conf" class="confirm-overlay">
+        <div class='confirm-container'>
+            <!-- Timeout<span style="color: darkred;">!</span> -->
+            <h1 class="confirm-message"  id="timeout" ></h1>
+            <h1 class="confirm-message">Do you want play to play again <span style="color: darkred;">?</span></h1>
+        <button id="no"class='no-modal-btn' onclick="confirm_no()">No</button>
+        <button id ="yes"class='yes-modal-btn' onclick="confirm_yes()">Yes</button>
+        </div>
+      </div>
     <!--  -->
     <div id ="pop_up" class="modal-overlay">
         <div class='modal-container'>

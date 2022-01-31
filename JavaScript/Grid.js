@@ -4,7 +4,6 @@ let selectCell = document.getElementById("firstOne")
 let curruntRow = 0;
 let curruntCell = 0;
 let values = {}
-//let grid_array = [[-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1]];
 let grid_array = [];
 let isfull = 0;
 let column_pass = 0;
@@ -47,9 +46,8 @@ function startTimer() {
         if (timer < 0) {
             clearInterval(timerInterval)
             document.getElementById("timer").innerText = `00:00`; 
-            alert ("Timeout! Try again; you will get it next time!");
-            var element = document.getElementById("myDIV");
-               element.classList.add("mystyle");
+            
+            document.getElementById("timeout").innerHTML="Timeout<span style='color: darkred;'>!</span>"
                playAgain();
         }
         else if (timer < 10)
@@ -60,18 +58,25 @@ function startTimer() {
 }
 
 function playAgain() {
+    var element = document.getElementById("conf");
+        element.classList.add("show-confirm");
+        remove_confirm();
     
-    if (confirm("Would you like to play again?")) {
+}
+function remove_confirm(){
+    if (  document.getElementById("yes").name=="yes")
+    {
         startButton.disabled = false
         timer = 60
         startButton.style.pointerEvents = "auto"
         location.reload();
+        document.getElementById("yes").name==""
     }
-    else{
-        location.assign("login-page.html")
+    else if (document.getElementById("no").name=="no"){
+        location.assign("login-page.html");
+        document.getElementById("no").name=="";
     }
 }
-    
 function move(direction , axis) {
     if(axis == "y"){
         curruntRow =  direction==-1?curruntRow-1:curruntRow+1   
@@ -121,8 +126,7 @@ function checkResult(){
     if (check_full()) {
         if (check_pass()) {
             setTimeout(() => {
-               // alert ("congratulations, good job! you are Awesome!");
-                //new codeeee
+               
                 var alert_element = document.getElementById("pop_up");
                                       alert_element.classList.add("show-modal");
 
@@ -131,7 +135,6 @@ function checkResult(){
                     if(localStorage.getItem(values["userName"]+"-"+values["level"]) < timer)
                     {
                         localStorage.setItem(values["userName"]+"-"+values["level"], timer);
-                       // alert("Congrats! you also broke your high Score, now it's: "+ (localStorage.getItem(values["userName"]+"-"+values["level"])));
                        alert_element.children[0].children[0].innerHTML+="<br>"+"you also broke your high Score, now it's: "+ (localStorage.getItem(values["userName"]+"-"+values["level"]));
                     }
                 }
@@ -139,8 +142,6 @@ function checkResult(){
                     localStorage.setItem(values["userName"]+"-"+values["level"], timer);
                 }
                 clearInterval(timerInterval);
-               //////////////// playAgain();
-                // grid_array = [[-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1]];
                 reset_grid();
             }, 100);
         }
@@ -222,10 +223,24 @@ startButton.addEventListener("click", () => {
 })
 
 
-//////////// for remove button 
 function remove_alert() {
         var element = document.getElementById("pop_up");
         element.classList.remove("show-modal");
         setTimeout(playAgain,100);
 }
+
+function confirm_yes() {
+        var element = document.getElementById("conf");
+        element.classList.remove("show-confirm");
+        document.getElementById("yes").name="yes"; 
+        remove_confirm();                 
+}
+
+function confirm_no() {
+    var element = document.getElementById("conf");
+    element.classList.remove("show-confirm");
+    document.getElementById("no").name="no";
+    remove_confirm();  
+}
+
 add_the_highscore();
