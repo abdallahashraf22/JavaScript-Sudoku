@@ -37,9 +37,11 @@ function startTimer() {
         timer--;
         if (timer < 0) {
             clearInterval(timerInterval)
-            document.getElementById("timer").innerText = `00:00`;
+            document.getElementById("timer").innerText = `00:00`; 
             alert ("Timeout! Try again; you will get it next time!");
-            playAgain()
+            var element = document.getElementById("myDIV");
+               element.classList.add("mystyle");
+               playAgain();
         }
         else if (timer < 10)
             document.getElementById("timer").innerText = `00:0${timer}`
@@ -49,8 +51,8 @@ function startTimer() {
 }
 
 function playAgain() {
-    let result = confirm("Would you like to play again?");
-    if (result) {
+    
+    if (confirm("Would you like to play again?")) {
         startButton.disabled = false
         timer = 60
         startButton.style.pointerEvents = "auto"
@@ -110,20 +112,25 @@ function checkResult(){
     if (check_full()) {
         if (check_pass()) {
             setTimeout(() => {
-                alert ("congratulations, good job! you are Awesome!");
+               // alert ("congratulations, good job! you are Awesome!");
+                //new codeeee
+                var alert_element = document.getElementById("pop_up");
+                                      alert_element.classList.add("show-modal");
+
                 if(localStorage.getItem(values["userName"]+"-"+values["level"]))
                 {
                     if(localStorage.getItem(values["userName"]+"-"+values["level"]) < timer)
                     {
                         localStorage.setItem(values["userName"]+"-"+values["level"], timer);
-                        alert("Congrats! you also broke your high Score, now it's: "+ (localStorage.getItem(values["userName"]+"-"+values["level"])));
+                       // alert("Congrats! you also broke your high Score, now it's: "+ (localStorage.getItem(values["userName"]+"-"+values["level"])));
+                       alert_element.children[0].children[0].innerHTML+="<br>"+"you also broke your high Score, now it's: "+ (localStorage.getItem(values["userName"]+"-"+values["level"]));
                     }
                 }
                 else{
                     localStorage.setItem(values["userName"]+"-"+values["level"], timer);
                 }
                 clearInterval(timerInterval);
-                playAgain();
+               // playAgain();
                 grid_array = [[-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1]];
             }, 100);
         }
@@ -201,3 +208,11 @@ startButton.addEventListener("click", () => {
     startTimer()
     document.body.addEventListener("keyup", the_event_on_the_Grid);
 })
+
+
+//////////// for remove button 
+function remove_alert() {
+        var element = document.getElementById("pop_up");
+        element.classList.remove("show-modal");
+        setTimeout(playAgain,100);
+}
