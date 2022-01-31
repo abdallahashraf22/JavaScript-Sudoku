@@ -20,6 +20,18 @@ for (let i = 0; i < LiS.length; i++) {
     LiS[i].children[0].src = `../Images/${values["name"]}/${i + 1}.png`
 }
 
+function add_the_highscore(){
+    if(localStorage.getItem(values["userName"]+"-"+values["level"])){
+        let player_name_li = document.getElementsByClassName("playerName")[0];
+        let the_score_LI = document.createElement("li");
+        the_score_LI.classList.add("textDivTopPage");
+        the_score_LI.classList.add("high-score");
+        the_score_LI.innerHTML = "Your highscore: " + localStorage.getItem(values["userName"]+"-"+values["level"]);
+        player_name_li.insertAdjacentElement("afterend", the_score_LI);
+    }
+}
+add_the_highscore();
+
 function startTimer() {
     timerInterval = setInterval(() => {
         timer--;
@@ -37,7 +49,7 @@ function startTimer() {
 }
 
 function playAgain() {
-    let result = confirm("would like play again");
+    let result = confirm("Would you like to play again?");
     if (result) {
         startButton.disabled = false
         timer = 60
@@ -93,26 +105,22 @@ function check_pass() {
      else
         return false;
 }
+
 function checkResult(){
     if (check_full()) {
         if (check_pass()) {
             setTimeout(() => {
                 alert ("congratulations, good job! you are Awesome!");
-                if(localStorage.getItem(values["userName"]))
+                if(localStorage.getItem(values["userName"]+"-"+values["level"]))
                 {
-                    if(localStorage.getItem(values["userName"]) < timer)
+                    if(localStorage.getItem(values["userName"]+"-"+values["level"]) < timer)
                     {
-                        localStorage.setItem(values["userName"], timer);
-                        alert("Congrats! you also broke your high Score, now it's: "+ (localStorage.getItem(values["userName"])));
+                        localStorage.setItem(values["userName"]+"-"+values["level"], timer);
+                        alert("Congrats! you also broke your high Score, now it's: "+ (localStorage.getItem(values["userName"]+"-"+values["level"])));
                     }
-                    else
-                    {
-                        alert("Your high score was: " +localStorage.getItem(values["userName"]));
-                    }
-                    
                 }
                 else{
-                    localStorage.setItem(values["userName"], timer);
+                    localStorage.setItem(values["userName"]+"-"+values["level"], timer);
                 }
                 clearInterval(timerInterval);
                 playAgain();
@@ -183,6 +191,7 @@ function the_event_on_the_Grid(e){
         move(1,"y")
     checkResult()
 }
+
 startButton.addEventListener("click", () => {
     getRandomImages(maxCells)
     startButton.disabled = true

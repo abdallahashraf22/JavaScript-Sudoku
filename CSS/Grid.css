@@ -2,8 +2,6 @@
   display: block;
   width: 90%;
   margin: auto;
-  /* min-height: 150px; */
-  /* max-height: 150px; */
 }
 
 .header_for_pre_game {
@@ -18,7 +16,6 @@ div > ul > li.cell {
   border-radius: 30%;
   display: inline-block;
   border: 1px solid rgba(245, 3, 233, 0.3);
-  /* padding-left: 5px; */
 }
 
 div > ul > li > img.gameImage {
@@ -58,18 +55,29 @@ div > ul > li > img.gameImage {
 .timer {
   display: inline-block;
   min-width: 150px;
-  margin: 50px 20px 0 150px;
+  margin: 50px 20px 0px 150px;
   position: absolute;
+  top: 100px;
 }
 
 .playerName {
-  /* float: right; */
   display: inline-block;
   min-width: 250px;
   font-weight: bolder;
   font-size: larger;
-  margin: 100px 20px 0 100px;
+  margin: 100px 20px 0px 100px;
   position: absolute;
+  top: 0px;
+}
+
+.high-score {
+  display: inline-block;
+  min-width: 200px;
+  margin: 50px 20px 0 125px;
+  font-weight: bolder;
+  font-size: larger;
+  position: absolute;
+  top: 0px;
 }
 
 #playerName {
