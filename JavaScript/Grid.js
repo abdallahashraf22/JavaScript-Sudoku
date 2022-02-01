@@ -20,6 +20,31 @@ for (let i = 0; i < LiS.length; i++) {
     LiS[i].children[0].src = `../Images/${values["name"]}/${i + 1}.png`
 }
 
+
+if(localStorage.getItem("darkMode") === "no"){
+    localStorage.setItem("darkMode", "yes");
+    switch_to_light_mode();
+}
+else if(localStorage.getItem("darkMode") === "yes"){
+    localStorage.setItem("darkMode", "no");
+    switch_to_dark_mode()
+}
+
+function switch_to_dark_mode(){
+    if(localStorage.getItem("darkMode") === "no"){
+        localStorage.setItem("darkMode", "yes");
+        document.body.style.backgroundImage = "URL('../Images/dark-theme.jpg')";
+    }
+}
+
+function switch_to_light_mode(){
+    if(localStorage.getItem("darkMode") === "yes"){
+        localStorage.setItem("darkMode", "no");
+        document.body.style.backgroundImage = "URL('../Images/back-ground.png')";
+    }
+}
+
+
 function reset_grid() {
     for (let i = 0; i < maxCells; i++) {
         grid_array.push([]);

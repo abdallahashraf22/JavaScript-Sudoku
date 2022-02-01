@@ -5,12 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>let's Play</title>
+    <title>Let's play!</title>
     <link rel="stylesheet" href="../CSS/reset.css">
     <link rel="stylesheet" href="../CSS/Grid.css">
 </head>
 
 <body>
+    <input type="image" src="../Images/dark_icon.png" id="switch_dark" onclick="switch_to_dark_mode()">
+    <input type="image" src="../Images/light_icon.png" id="switch_light" onclick="switch_to_light_mode()">
     <div id="conf" class="confirm-overlay">
         <div class='confirm-container'>
             <h1 class="confirm-message" id="timeout"></h1>
@@ -22,8 +24,8 @@
 
     <div id="pop_up" class="modal-overlay">
         <div class='modal-container'>
-            <h1 class="congratulation-message"><span style="color: darkred;">Congratulations</span>, good job! you are
-                Awesome!</h1>
+            <h1 class="congratulation-message"><span style="color: darkred;">Congratulations</span>,
+                good job! you are Awesome!</h1>
             <button class='close-modal-btn' onclick="remove_alert()">&#215;</button>
         </div>
     </div>

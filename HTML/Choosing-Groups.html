@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Choosing Groups</title>
+    <title>Choose your group</title>
     <link href="../CSS/reset.css" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/Choosing_Groups_Style.css">
-    <script src="../JavaScript/Choosing_Groups.js"></script>
 </head>
 
 <body onload="create_events()">
+    <input type="image" src="../Images/dark_icon.png" id="switch_dark" onclick="switch_to_dark_mode()">
+    <input type="image" src="../Images/light_icon.png" id="switch_light" onclick="switch_to_light_mode()">
     <div id="full_groups">
         <div class="Single_Group">
             <img src="../Images/Group1/1.png" class="Group_pictures">
@@ -43,6 +44,7 @@
             <button class="Group_button">Group 4</button>
         </div>
     </div>
+    <script src="../JavaScript/Choosing_Groups.js"></script>
 </body>
 
 </html>

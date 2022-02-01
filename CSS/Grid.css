@@ -7,7 +7,7 @@
   min-width: 500px;
 }
 
-div>ul>li.cell {
+div > ul > li.cell {
   width: 12%;
   min-width: 100px;
   height: 150px;
@@ -16,7 +16,7 @@ div>ul>li.cell {
   border: 1px solid rgba(245, 3, 233, 0.3);
 }
 
-div>ul>li>img.gameImage {
+div > ul > li > img.gameImage {
   height: 100%;
   width: 100%;
 }
@@ -43,9 +43,11 @@ div>ul>li>img.gameImage {
   min-height: 30px;
   text-align: center;
   padding-top: 15px;
-  background: linear-gradient(90deg,
-      rgba(197, 167, 101, 0.5) 0%,
-      rgba(113, 214, 135, 0.5) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(197, 167, 101, 0.5) 0%,
+    rgba(113, 214, 135, 0.5) 100%
+  );
 }
 
 .timer {
@@ -84,9 +86,11 @@ div>ul>li>img.gameImage {
   width: max-content;
   margin: 5px auto;
   border-radius: 30px;
-  background: linear-gradient(90deg,
-      rgba(197, 167, 101, 0.6) 0%,
-      rgba(113, 214, 135, 0.6) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(197, 167, 101, 0.6) 0%,
+    rgba(113, 214, 135, 0.6) 100%
+  );
   box-shadow: 8px 10px rgba(223, 185, 102, 0.2);
   padding: 2%;
   display: block;
@@ -109,9 +113,11 @@ div>ul>li>img.gameImage {
 .startButton {
   margin: 15px auto;
   display: block;
-  background: linear-gradient(90deg,
-      rgba(197, 167, 101, 0.6) 0%,
-      rgba(113, 214, 135, 0.6) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(197, 167, 101, 0.6) 0%,
+    rgba(113, 214, 135, 0.6) 100%
+  );
   border-radius: 50px;
   height: 50px;
   width: 250px;
@@ -156,9 +162,11 @@ div>ul>li>img.gameImage {
 }
 
 .modal-container {
-  background: linear-gradient(90deg,
-      rgba(197, 167, 101, 0.9) 0%,
-      rgba(113, 214, 135, 0.9) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(197, 167, 101, 0.9) 0%,
+    rgba(113, 214, 135, 0.9) 100%
+  );
   border-radius: 30px;
   width: 90vw;
   height: 30vh;
@@ -225,9 +233,11 @@ div>ul>li>img.gameImage {
 }
 
 .confirm-container {
-  background: linear-gradient(90deg,
-      rgba(182, 102, 102, 0.9),
-      rgba(89, 145, 89, 0.9) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(182, 102, 102, 0.9),
+    rgba(89, 145, 89, 0.9) 100%
+  );
   border-radius: 30px;
   width: 90vw;
   height: 30vh;
@@ -243,4 +253,20 @@ div>ul>li>img.gameImage {
   line-height: 1.25;
   font-size: 40px;
   margin-top: 30px;
+}
+
+#switch_dark {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+
+#switch_light {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  top: 0px;
+  left: 50px;
 }
