@@ -5,31 +5,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>let's Play</title>
     <link rel="stylesheet" href="../CSS/reset.css">
     <link rel="stylesheet" href="../CSS/Grid.css">
 </head>
 
 <body>
-    <!-- new confirm code -->
-    <div id ="conf" class="confirm-overlay">
+    <div id="conf" class="confirm-overlay">
         <div class='confirm-container'>
-            <!-- Timeout<span style="color: darkred;">!</span> -->
-            <h1 class="confirm-message"  id="timeout" ></h1>
-            <h1 class="confirm-message">Do you want play to play again <span style="color: darkred;">?</span></h1>
-        <button id="no"class='no-modal-btn' onclick="confirm_no()">No</button>
-        <button id ="yes"class='yes-modal-btn' onclick="confirm_yes()">Yes</button>
+            <h1 class="confirm-message" id="timeout"></h1>
+            <h1 class="confirm-message">Do you want to play again <span style="color: darkred;">?</span></h1>
+            <button id="no" class='no-modal-btn' onclick="confirm_no()">No</button>
+            <button id="yes" class='yes-modal-btn' onclick="confirm_yes()">Yes</button>
         </div>
-      </div>
-    <!--  -->
-    <div id ="pop_up" class="modal-overlay">
+    </div>
+
+    <div id="pop_up" class="modal-overlay">
         <div class='modal-container'>
-          <h1 class="congratulation-message"><span style="color: darkred;">Congratulations</span>, good job! you are Awesome!</h1>
-        <button class='close-modal-btn' onclick="remove_alert()">&#215;</button>
+            <h1 class="congratulation-message"><span style="color: darkred;">Congratulations</span>, good job! you are
+                Awesome!</h1>
+            <button class='close-modal-btn' onclick="remove_alert()">&#215;</button>
         </div>
-      </div>
-    <!--  -->
-    <div class="Rows topImagesWithName">
+    </div>
+
+    <div class="topImagesWithName">
         <ul class="header_for_pre_game">
 
             <li class="cell">
@@ -51,43 +50,9 @@
         </ul>
     </div>
     <button id="startButton" class="startButton">Start</button>
-    <div id="grid">
-        <div class="Rows">
-            <div class="cell" id="firstOne">
-                <!-- <img src="../Images/Group1/1.png" class="gameImage" alt=""> -->
-            </div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-        </div>
-        <br>
-        <div class="Rows">
-            <div class="cell"></div>
-            <div class="cell">
-                <!-- <img src="../Images/Group1/2.png" class="gameImage" alt=""> -->
-            </div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-        </div>
-        <br>
-        <div class="Rows">
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell">
-                <!-- <img src="../Images/Group1/3.png" class="gameImage" alt=""> -->
-            </div>
-            <div class="cell"></div>
-        </div>
-        <br>
-        <div class="Rows">
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell">
-                <!-- <img src="../Images/Group1/4.png" class="gameImage" alt=""> -->
-            </div>
-        </div>
-    </div>
+    <center>
+        <div id="grid"></div>
+    </center>
     <script src="../JavaScript/Grid.js"></script>
 </body>
 
