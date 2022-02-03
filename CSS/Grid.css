@@ -1,16 +1,14 @@
-/* .Rows {
-  display: block;
-} */
-
 .header_for_pre_game {
   text-align: center;
-  min-width: 500px;
+  height: max-content;
+  display: inline-table;
+  margin: auto;
 }
 
 div > ul > li.cell {
-  width: 12%;
+  width: 5vw;
   min-width: 100px;
-  height: 150px;
+  height: 7em;
   border-radius: 30%;
   display: inline-block;
   border: 1px solid rgba(245, 3, 233, 0.3);
@@ -50,32 +48,32 @@ div > ul > li > img.gameImage {
   );
 }
 
-.timer {
+/* .timer {
   display: inline-block;
   min-width: 150px;
   margin: 50px 20px 0px 150px;
   position: absolute;
   top: 100px;
-}
+} */
 
 .playerName {
-  display: inline-block;
+  /* display: inline-block; */
   min-width: 250px;
   font-weight: bolder;
   font-size: larger;
-  margin: 100px 20px 0px 100px;
-  position: absolute;
-  top: 0px;
+  /* margin: 100px 20px 0px 100px; */
+  /* position: absolute; */
+  /* top: 0px; */
 }
 
 .high-score {
-  display: inline-block;
+  /* display: inline-block; */
   min-width: 200px;
-  margin: 50px 20px 0 125px;
+  /* margin: 50px 20px 0 125px; */
   font-weight: bolder;
   font-size: larger;
-  position: absolute;
-  top: 0px;
+  /* position: absolute; */
+  /* top: 0px; */
 }
 
 #playerName {
@@ -97,8 +95,8 @@ div > ul > li > img.gameImage {
 }
 
 .topImagesWithName {
-  width: 70%;
-  margin-top: 20px;
+  width:100%;
+  display: inline-flex;
 }
 
 .choosen {

@@ -260,6 +260,28 @@ function repairGrid() {
     selectCell = document.getElementById("firstOne")
 }
 
+function repairHeaderqImages() {
+        let ulImages = document.getElementById("imagesWithNumbers")
+        for (let cells = 0; cells < maxCells; cells++) {
+            let newCell = document.createElement("li")
+            newCell.classList.add("cell")
+            ulImages.appendChild(newCell)
+            let newImage = document.createElement("img")
+            newImage.src="../Images/Group1/"+(cells+1)+".png"
+            newImage.classList.add("gameImage")
+            newCell.appendChild(newImage)
+            let newSpan= document.createElement("span")
+            newSpan.innerText=cells+1
+            newCell.appendChild(newSpan)
+            if (cells && cells%Math.sqrt(maxCells)>2 && cells%Math.sqrt(maxCells)==0 )
+                {
+                    console.log(cells%Math.sqrt(maxCells))
+                    console.log(cells)
+                    ulImages.appendChild(document.createElement("br"))
+                }
+        }
+}
+
 function the_event_on_the_Grid(e) {
     if (isFinite(e.key) && Number(e.key) > 0 && Number(e.key) < maxCells + 1)
         putImage(e.key, curruntRow, curruntCell)
@@ -306,6 +328,7 @@ function confirm_no() {
     document.getElementById("no").name = "no";
     remove_confirm();
 }
+repairHeaderqImages()
 repairGrid()
 add_the_highscore();
 window.addEventListener("keydown", function (e) {
@@ -313,3 +336,10 @@ window.addEventListener("keydown", function (e) {
         e.preventDefault();
     }
 }, false);
+if (document.referrer.split("/").at(-1).split("?")[0] != "Choosing-Groups.html") {
+    alert("you must login first");
+    location.replace("login-page.html")
+}
+else if (!document.cookie){
+    alert("run this app from server");
+}
