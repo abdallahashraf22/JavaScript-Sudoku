@@ -21,24 +21,24 @@ for (let i = 0; i < LiS.length; i++) {
 }
 
 
-if(localStorage.getItem("darkMode") === "no"){
+if (localStorage.getItem("darkMode") === "no") {
     localStorage.setItem("darkMode", "yes");
     switch_to_light_mode();
 }
-else if(localStorage.getItem("darkMode") === "yes"){
+else if (localStorage.getItem("darkMode") === "yes") {
     localStorage.setItem("darkMode", "no");
     switch_to_dark_mode()
 }
 
-function switch_to_dark_mode(){
-    if(localStorage.getItem("darkMode") === "no"){
+function switch_to_dark_mode() {
+    if (localStorage.getItem("darkMode") === "no") {
         localStorage.setItem("darkMode", "yes");
         document.body.style.backgroundImage = "URL('../Images/dark-theme.jpg')";
     }
 }
 
-function switch_to_light_mode(){
-    if(localStorage.getItem("darkMode") === "yes"){
+function switch_to_light_mode() {
+    if (localStorage.getItem("darkMode") === "yes") {
         localStorage.setItem("darkMode", "no");
         document.body.style.backgroundImage = "URL('../Images/back-ground.png')";
     }
@@ -64,6 +64,14 @@ function add_the_highscore() {
         player_name_li.insertAdjacentElement("afterend", the_score_LI);
     }
 }
+function calcTimer() {
+    let minutes = Math.floor(timer / 60); // get minutes
+    let seconds = timer - (minutes * 60); //  get seconds
+    // add 0 if value < 10; Example: 2 => 02
+    if (minutes < 10) {minutes = "0"+minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
+    return minutes+':'+seconds; // Return is HH : MM : SS
+}
 
 function startTimer() {
     timerInterval = setInterval(() => {
@@ -75,10 +83,8 @@ function startTimer() {
             document.getElementById("timeout").innerHTML = "Timeout<span style='color: darkred;'>!</span>"
             playAgain();
         }
-        else if (timer < 10)
-            document.getElementById("timer").innerText = `00:0${timer}`
         else
-            document.getElementById("timer").innerText = `00:${timer}`
+            document.getElementById("timer").innerText = calcTimer()
     }, 1000)
 }
 
@@ -145,25 +151,25 @@ function check_pass() {
     else
         return false;
 }
-function checkEndGame(){
-    if((maxCells*(maxCells+1)/2)*maxCells == grid_array.reduce(function(a,b){return a.concat(b)}).reduce(function(a,b){return a+b})) 
-    setTimeout(() => {
+function checkEndGame() {
+    if ((maxCells * (maxCells + 1) / 2) * maxCells == grid_array.reduce(function (a, b) { return a.concat(b) }).reduce(function (a, b) { return a + b }))
+        setTimeout(() => {
 
-        var alert_element = document.getElementById("pop_up");
-        alert_element.classList.add("show-modal");
+            var alert_element = document.getElementById("pop_up");
+            alert_element.classList.add("show-modal");
 
-        if (localStorage.getItem(values["userName"] + "-" + values["level"])) {
-            if (localStorage.getItem(values["userName"] + "-" + values["level"]) < timer) {
-                localStorage.setItem(values["userName"] + "-" + values["level"], timer);
-                alert_element.children[0].children[0].innerHTML += "<br>" + "you also broke your high Score, now it's: " + (localStorage.getItem(values["userName"] + "-" + values["level"]));
+            if (localStorage.getItem(values["userName"] + "-" + values["level"])) {
+                if (localStorage.getItem(values["userName"] + "-" + values["level"]) < timer) {
+                    localStorage.setItem(values["userName"] + "-" + values["level"], timer);
+                    alert_element.children[0].children[0].innerHTML += "<br>" + "you also broke your high Score, now it's: " + (localStorage.getItem(values["userName"] + "-" + values["level"]));
+                }
             }
-        }
-        else {
-            localStorage.setItem(values["userName"] + "-" + values["level"], timer);
-        }
-        clearInterval(timerInterval);
-        reset_grid();
-    }, 100);
+            else {
+                localStorage.setItem(values["userName"] + "-" + values["level"], timer);
+            }
+            clearInterval(timerInterval);
+            reset_grid();
+        }, 100);
 }
 
 function checkResult() {
@@ -261,25 +267,19 @@ function repairGrid() {
 }
 
 function repairHeaderqImages() {
-        let ulImages = document.getElementById("imagesWithNumbers")
-        for (let cells = 0; cells < maxCells; cells++) {
-            let newCell = document.createElement("li")
-            newCell.classList.add("cell")
-            ulImages.appendChild(newCell)
-            let newImage = document.createElement("img")
-            newImage.src="../Images/Group1/"+(cells+1)+".png"
-            newImage.classList.add("gameImage")
-            newCell.appendChild(newImage)
-            let newSpan= document.createElement("span")
-            newSpan.innerText=cells+1
-            newCell.appendChild(newSpan)
-            if (cells && cells%Math.sqrt(maxCells)>2 && cells%Math.sqrt(maxCells)==0 )
-                {
-                    console.log(cells%Math.sqrt(maxCells))
-                    console.log(cells)
-                    ulImages.appendChild(document.createElement("br"))
-                }
-        }
+    let ulImages = document.getElementById("imagesWithNumbers")
+    for (let cells = 0; cells < maxCells; cells++) {
+        let newCell = document.createElement("li")
+        newCell.classList.add("cell")
+        ulImages.appendChild(newCell)
+        let newImage = document.createElement("img")
+        newImage.src = "../Images/Group1/" + (cells + 1) + ".png"
+        newImage.classList.add("gameImage")
+        newCell.appendChild(newImage)
+        let newSpan = document.createElement("span")
+        newSpan.innerText = cells + 1
+        newCell.appendChild(newSpan)
+    }
 }
 
 function the_event_on_the_Grid(e) {
@@ -336,10 +336,10 @@ window.addEventListener("keydown", function (e) {
         e.preventDefault();
     }
 }, false);
-if (document.referrer.split("/").at(-1).split("?")[0] != "Choosing-Groups.html") {
-    alert("you must login first");
-    location.replace("login-page.html")
-}
-else if (!document.cookie){
-    alert("run this app from server");
-}
+// if (document.referrer.split("/").at(-1).split("?")[0] != "Choosing-Groups.html") {
+//     alert("you must login first");
+//     location.replace("login-page.html")
+// }
+// else if (!document.cookie) {
+//     alert("run this app from server");
+// }
