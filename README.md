@@ -48,26 +48,24 @@ after either winning or losing, an alert will be displayed, asking you if you wo
 
 ### Login page:
 
-<p><img src="./Images/Readme_File/login.jpg" width="45%" style="margin-right:5%"><img src="./Images/Readme_File/login_dark.jpg" width="45%"></p>
+<p><img src="./Images/Readme_File/login.jpg" width="45%" style="margin-right:5%"> <img src="./Images/Readme_File/login_dark.jpg" width="45%"></p>
 
 ### Choosing groups:
 
-<p><img src="./Images/Readme_File/choosing_groups.jpg" width="45%" style="margin-right:5%"><img src="./Images/Readme_File/choosing_groups_dark.jpg" width="45%"></p>
+<p><img src="./Images/Readme_File/choosing_groups.jpg" width="45%" style="margin-right:5%"> <img src="./Images/Readme_File/choosing_groups_dark.jpg" width="45%"></p>
 
 ### Gameplay:
 
-<p><img src="./Images/Readme_File/game_play.jpg" width="45%" style="margin-right:5%"><img src="./Images/Readme_File/game_play_dark.jpg" width="45%"></p>
+<p><img src="./Images/Readme_File/game_play.jpg" width="45%" style="margin-right:5%"> <img src="./Images/Readme_File/game_play_dark.jpg" width="45%"></p>
 
-<p><img src="./Images/Readme_File/game_play_9X9.jpg" width="45%" style="margin-right:5%"><img src="./Images/Readme_File/game_play_9X9_dark.jpg" width="45%"></p>
+<p><img src="./Images/Readme_File/game_play_9X9.jpg" width="45%" style="margin-right:5%"> <img src="./Images/Readme_File/game_play_9X9_dark.jpg" width="45%"></p>
 
-<p><img src="./Images/Readme_File/winning_the_game.jpg" width="45%" style="margin-right:5%"><img src="./Images/Readme_File/Timeout.jpg" width="45%"></p>
+<p><img src="./Images/Readme_File/winning_the_game.jpg" width="45%" style="margin-right:5%"> <img src="./Images/Readme_File/Timeout.jpg" width="45%"></p>
 
-# Contributers:
+# Contributing and changing:
 
-1. Abdallah Ashraf El-Sayed.
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-2. Ahmed Mohamed Salah.
+Please make sure to update tests as appropriate.
 
-3. Mohamed Hamdy Abdallah.
-
-4. Ahmed Mohamed Shokry.
+Incase you want to change the pictures, you're welcome to change the images in each group, make sure each image is of a PNG extention, and it's counter from 1 to 9 for each group; each group name has to be Group# (the numbers being from 1 to 6) **i.e : create folder called Group1 with pictures inside being called 1.png to 9.png**
