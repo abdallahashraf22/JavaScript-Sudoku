@@ -1,6 +1,6 @@
 #full_groups {
   width: 700px;
-  height: 800px;
+  height: 1200px;
   border: 1px solid rgba(245, 3, 233, 0.5);
   margin: 10px auto;
   border-radius: 30px;
@@ -14,7 +14,7 @@
 
 .Single_Group {
   width: 45%;
-  height: 45%;
+  height: 30%;
   border: 1px solid rgba(245, 3, 233, 0.5);
   margin: 20px 15px;
   border-radius: 30px;

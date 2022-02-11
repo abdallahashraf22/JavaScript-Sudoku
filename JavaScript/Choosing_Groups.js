@@ -1,7 +1,6 @@
 let group_buttons = document.getElementsByTagName("button");
 let groups_of_pictures = document.getElementsByClassName("Single_Group");
 function create_events(){
-    
     for (let index = 0; index < group_buttons.length; index++) {
         group_buttons[index].addEventListener("click", function (e) {
             e.preventDefault();
@@ -49,3 +48,7 @@ function switch_to_light_mode(){
     }
 }
 
+if (document.referrer.split("/").at(-1).split("?")[0] != "login-page.html") {
+    alert("You must login first!");
+    document.location.assign("login-page.html")
+}

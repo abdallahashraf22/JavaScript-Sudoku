@@ -235,7 +235,7 @@ function getRandomImages(max = 4) {
         let randomeImage = parseInt(Math.random() * (max) + 1)
 
         if (!dict[randomeImage]) {
-            if (columns[curruntCell] >= Math.floor(maxCells / 2)) {
+            if (columns[curruntCell] >= 1) {
                 i--;
                 continue
             }
@@ -273,7 +273,7 @@ function repairHeaderqImages() {
         newCell.classList.add("cell")
         ulImages.appendChild(newCell)
         let newImage = document.createElement("img")
-        newImage.src = "../Images/Group1/" + (cells + 1) + ".png"
+        newImage.src = "../Images/"+values["name"]+ "/"+(cells + 1) + ".png"
         newImage.classList.add("gameImage")
         newCell.appendChild(newImage)
         let newSpan = document.createElement("span")
@@ -336,10 +336,5 @@ window.addEventListener("keydown", function (e) {
         e.preventDefault();
     }
 }, false);
-// if (document.referrer.split("/").at(-1).split("?")[0] != "Choosing-Groups.html") {
-//     alert("you must login first");
-//     location.replace("login-page.html")
-// }
-// else if (!document.cookie) {
-//     alert("run this app from server");
-// }
+
+
